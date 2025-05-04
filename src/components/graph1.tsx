@@ -22,7 +22,7 @@ const fetcher = async (url: string) => {
   return response.json();
 };
 
-export const AreaChartHero = () => {
+export const Graph1 = () => {
   const {
     data: weatherData,
     error,

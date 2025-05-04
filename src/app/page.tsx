@@ -1,4 +1,4 @@
-import { AreaChartHero } from "@/components/graph1";
+import { Graph1 } from "@/components/graph1";
 import { graph2 as Graph2 } from "@/components/graph2";
 import { ModeToggle } from "@/components/ui/themebutton";
 import {
@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main className="flex flex-col gap-4 max-w-4xl mx-auto">
       <Card>
-        <AreaChartHero />
+        <Graph1 />
       </Card>
 
       <Card>
