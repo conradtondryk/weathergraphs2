@@ -5,11 +5,11 @@ import { Card } from "@/components/ui/card";
 export default function Home() {
   return (
     <main className="flex flex-col gap-4 max-w-4xl mx-auto">
-      <Card>
+      <Card className="p-4">
         <Graph1 />
       </Card>
 
-      <Card>
+      <Card className="p-4">
         <Graph2 />
       </Card>
     </main>
