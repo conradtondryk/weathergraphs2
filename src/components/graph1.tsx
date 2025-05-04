@@ -2,6 +2,7 @@
 
 import useSWR from "swr";
 import { AreaChart } from "@/tremorcomponents/areagraph";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface WeatherData {
   date: string;
@@ -39,7 +40,7 @@ export default function Graph1() {
       Temperature: item.temperature_c,
     })) || [];
 
-  if (isLoading) return <div>Loading weather data...</div>;
+  if (isLoading) return <Skeleton className="h-80" />;
   if (error) return <div>Error loading data: {error.message}</div>;
 
   return (
