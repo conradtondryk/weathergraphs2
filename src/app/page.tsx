@@ -15,14 +15,13 @@ export default function Home() {
   return (
     <main>
       <ModeToggle />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Card className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AreaChartHero />
-      </div>
+      </Card>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Card className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Graph2 />
-      </div>
+      </Card>
     </main>
   )
 }
