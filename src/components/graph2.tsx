@@ -41,13 +41,13 @@ export default function Graph2() {
       "UV Index": item.uv_index,
     })) || [];
 
-  if (isLoading) return <Skeleton className="h-80" />;
+  if (isLoading) return <Skeleton className="h-68" />;
   if (error) return <div>Error loading data: {error.message}</div>;
 
   return (
     <Card className="p-4">
       <AreaChart
-        className="h-80"
+        className="h-60"
         data={chartData}
         index="date"
         categories={["UV Index"]}

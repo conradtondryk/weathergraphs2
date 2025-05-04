@@ -41,13 +41,13 @@ export default function Graph1() {
       Temperature: item.temperature_c,
     })) || [];
 
-  if (isLoading) return <Skeleton className="h-80" />;
+  if (isLoading) return <Skeleton className="h-68" />;
   if (error) return <div>Error loading data: {error.message}</div>;
 
   return (
     <Card className="p-4">
       <AreaChart
-        className="h-80"
+        className="h-60"
         data={chartData}
         index="date"
         categories={["Temperature"]}
