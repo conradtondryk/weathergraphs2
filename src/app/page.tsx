@@ -1,6 +1,6 @@
-import { AreaChartHero } from "@/components/graph1"
-import { graph2 as Graph2 } from "@/components/graph2"
-import { ModeToggle } from "@/components/ui/themebutton"
+import { AreaChartHero } from "@/components/graph1";
+import { graph2 as Graph2 } from "@/components/graph2";
+import { ModeToggle } from "@/components/ui/themebutton";
 import {
   Card,
   CardContent,
@@ -8,8 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-
+} from "@/components/ui/card";
 
 export default function Home() {
   return (
@@ -22,7 +21,5 @@ export default function Home() {
         <Graph2 />
       </Card>
     </main>
-  )
+  );
 }
-
-

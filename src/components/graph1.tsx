@@ -1,42 +1,47 @@
-"use client"
+"use client";
 
-import useSWR from "swr"
-import { AreaChart } from "@/tremorcomponents/areagraph"
+import useSWR from "swr";
+import { AreaChart } from "@/tremorcomponents/areagraph";
 
 interface WeatherData {
-  date: string
-  temperature_c: number
-  humidity_percent: number
-  uv_index: number
-  precipitation_mm: number
-  wind_speed_kmh: number
-  id: string
+  date: string;
+  temperature_c: number;
+  humidity_percent: number;
+  uv_index: number;
+  precipitation_mm: number;
+  wind_speed_kmh: number;
+  id: string;
 }
 
 // Fetcher function for SWR
 const fetcher = async (url: string) => {
-  const response = await fetch(url)
+  const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`Failed to fetch: ${response.status}`)
+    throw new Error(`Failed to fetch: ${response.status}`);
   }
-  return response.json()
-}
+  return response.json();
+};
 
 export const AreaChartHero = () => {
-  const { data: weatherData, error, isLoading } = useSWR<WeatherData[]>(
-    "https://fake-api.lynas.dev/weather",
-    fetcher
-  )
+  const {
+    data: weatherData,
+    error,
+    isLoading,
+  } = useSWR<WeatherData[]>("https://fake-api.lynas.dev/weather", fetcher);
 
   // Format data for the chart
-  const chartData = weatherData?.map(item => ({
-    date: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-    Temperature: item.temperature_c
-  })) || []
+  const chartData =
+    weatherData?.map((item) => ({
+      date: new Date(item.date).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      }),
+      Temperature: item.temperature_c,
+    })) || [];
 
-  if (isLoading) return <div>Loading weather data...</div>
-  if (error) return <div>Error loading data: {error.message}</div>
-  
+  if (isLoading) return <div>Loading weather data...</div>;
+  if (error) return <div>Error loading data: {error.message}</div>;
+
   return (
     <AreaChart
       className="h-80"
@@ -46,5 +51,5 @@ export const AreaChartHero = () => {
       valueFormatter={(number: number) => `${number.toFixed(1)}°C`}
       onValueChange={(v) => console.log(v)}
     />
-  )
-}
+  );
+};

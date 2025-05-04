@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/ui/themebutton";
-
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,12 +36,11 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >  
-            <ModeToggle />
+        >
+          <ModeToggle />
           {children}
         </ThemeProvider>
       </body>
     </html>
   );
 }
-
