@@ -12,12 +12,12 @@ import {
 
 export default function Home() {
   return (
-    <main>
-      <Card className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="flex flex-col gap-4 max-w-4xl mx-auto">
+      <Card>
         <AreaChartHero />
       </Card>
 
-      <Card className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Card>
         <Graph2 />
       </Card>
     </main>
