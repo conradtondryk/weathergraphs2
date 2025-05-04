@@ -31,7 +31,7 @@ export const graph2 = () => {
   // Format data for the chart
   const chartData = weatherData?.map(item => ({
     date: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-    UV_Index: item.uv_index
+    "UV Index": item.uv_index
   })) || []
 
   if (isLoading) return <div>Loading weather data...</div>
@@ -42,8 +42,9 @@ export const graph2 = () => {
       className="h-80"
       data={chartData}
       index="date"
-      categories={["UV_Index"]}
-      valueFormatter={(number: number) => `${number.toFixed(1)}°C`}
+      categories={["UV Index"]}
+      colors={["amber"]}
+      valueFormatter={(number: number) => `${number.toFixed(1)}`}
       onValueChange={(v) => console.log(v)}
     />
   )
