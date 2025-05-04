@@ -5,13 +5,8 @@ import { Card } from "@/components/ui/card";
 export default function Home() {
   return (
     <main className="flex flex-col gap-4 max-w-4xl mx-auto">
-      <Card className="p-4">
-        <Graph1 />
-      </Card>
-
-      <Card className="p-4">
-        <Graph2 />
-      </Card>
+      <Graph1 />
+      <Graph2 />
     </main>
   );
 }

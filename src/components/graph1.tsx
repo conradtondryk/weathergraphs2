@@ -3,6 +3,7 @@
 import useSWR from "swr";
 import { AreaChart } from "@/tremorcomponents/areagraph";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Card } from "./ui/card";
 
 interface WeatherData {
   date: string;
@@ -44,13 +45,15 @@ export default function Graph1() {
   if (error) return <div>Error loading data: {error.message}</div>;
 
   return (
-    <AreaChart
-      className="h-80"
-      data={chartData}
-      index="date"
-      categories={["Temperature"]}
-      valueFormatter={(number: number) => `${number.toFixed(1)}°C`}
-      onValueChange={(v) => console.log(v)}
-    />
+    <Card className="p-4">
+      <AreaChart
+        className="h-80"
+        data={chartData}
+        index="date"
+        categories={["Temperature"]}
+        valueFormatter={(number: number) => `${number.toFixed(1)}°C`}
+        onValueChange={(v) => console.log(v)}
+      />
+    </Card>
   );
 }
