@@ -37,7 +37,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="inline-flex justify-end items-center p-4">
+          <div className="inline-flex justify-end items-center p-4 min-w-full">
             <ModeToggle />
           </div>
 
