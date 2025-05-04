@@ -1,5 +1,5 @@
-import { Graph1 } from "@/components/graph1";
-import { graph2 as Graph2 } from "@/components/graph2";
+import Graph1 from "@/components/graph1";
+import Graph2 from "@/components/graph2";
 import { Card } from "@/components/ui/card";
 
 export default function Home() {

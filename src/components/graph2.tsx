@@ -22,7 +22,7 @@ const fetcher = async (url: string) => {
   return response.json();
 };
 
-export const graph2 = () => {
+export default function Graph2() {
   const {
     data: weatherData,
     error,
@@ -53,4 +53,4 @@ export const graph2 = () => {
       onValueChange={(v) => console.log(v)}
     />
   );
-};
+}
