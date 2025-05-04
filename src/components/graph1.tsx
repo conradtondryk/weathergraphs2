@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import useSWR from "swr"
 import { AreaChart } from "@/tremorcomponents/areagraph"
 
 interface WeatherData {
@@ -13,42 +13,29 @@ interface WeatherData {
   id: string
 }
 
+// Fetcher function for SWR
+const fetcher = async (url: string) => {
+  const response = await fetch(url)
+  if (!response.ok) {
+    throw new Error(`Failed to fetch: ${response.status}`)
+  }
+  return response.json()
+}
+
 export const AreaChartHero = () => {
-  const [weatherData, setWeatherData] = useState<WeatherData[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    const fetchWeatherData = async () => {
-      try {
-        setIsLoading(true)
-        const response = await fetch("https://fake-api.lynas.dev/weather")
-        
-        if (!response.ok) {
-          throw new Error(`Failed to fetch: ${response.status}`)
-        }
-        
-        const data = await response.json()
-        setWeatherData(data)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred")
-        console.error("Error fetching weather data:", err)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchWeatherData()
-  }, [])
+  const { data: weatherData, error, isLoading } = useSWR<WeatherData[]>(
+    "https://fake-api.lynas.dev/weather",
+    fetcher
+  )
 
   // Format data for the chart
-  const chartData = weatherData.map(item => ({
+  const chartData = weatherData?.map(item => ({
     date: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
     Temperature: item.temperature_c
-  }))
+  })) || []
 
   if (isLoading) return <div>Loading weather data...</div>
-  if (error) return <div>Error loading data: {error}</div>
+  if (error) return <div>Error loading data: {error.message}</div>
   
   return (
     <AreaChart
