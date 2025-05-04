@@ -1,26 +1,44 @@
 "use client";
 
 import * as React from "react";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Monitor } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 
-export function ModeToggle() {
+export default function ModeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const handleToggle = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  return (
-    <Button variant="outline" size="icon" onClick={handleToggle}>
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 hover:cursor-pointer" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 hover:cursor-pointer" />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
-  );
+  if (!mounted) {
+    return null;
+  }
+
+  if (theme === "system") {
+    return (
+      <Button variant="outline" size="icon" onClick={() => setTheme("light")}>
+        <Monitor className="h-[1.2rem] w-[1.2rem] transition-all hover:cursor-pointer" />
+      </Button>
+    );
+  }
+
+  if (theme === "light") {
+    return (
+      <Button variant="outline" size="icon" onClick={() => setTheme("dark")}>
+        <Sun className="h-[1.2rem] w-[1.2rem] transition-all hover:cursor-pointer" />
+      </Button>
+    );
+  }
+
+  if (theme === "dark") {
+    return (
+      <Button variant="outline" size="icon" onClick={() => setTheme("system")}>
+        <Moon className="h-[1.2rem] w-[1.2rem] transition-all hover:cursor-pointer" />
+      </Button>
+    );
+  }
 }
