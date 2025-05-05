@@ -25,7 +25,7 @@ import {
   getYAxisDomain,
   type AvailableChartColorsKeys,
 } from "@/lib/chartUtils";
-import { useOnWindowResize } from "@/lib/useOnWindowResize";
+import { useOnWindowResize } from "@/hooks/useOnWindowResize";
 import { cx } from "@/lib/utils";
 
 //#region Shape

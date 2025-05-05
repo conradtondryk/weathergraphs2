@@ -3,7 +3,8 @@
 import useSWR from "swr";
 import { AreaChart } from "@/tremorcomponents/areagraph";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card } from "./ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChartColumnBig } from "lucide-react";
 
 interface WeatherData {
   date: string;
@@ -39,6 +40,7 @@ export default function Graph2() {
         day: "numeric",
       }),
       "UV Index": item.uv_index,
+      Temperature: item.temperature_c,
     })) || [];
 
   if (isLoading) return <Skeleton className="h-68" />;
@@ -46,12 +48,16 @@ export default function Graph2() {
 
   return (
     <Card className="p-4">
+      <CardHeader>
+        <CardTitle>UV Index</CardTitle>
+      </CardHeader>
+      <ChartColumnBig />
       <AreaChart
         className="h-60"
         data={chartData}
         index="date"
-        categories={["UV Index"]}
-        colors={["amber"]}
+        categories={["UV Index", "Temperature"]}
+        colors={["amber", "emerald"]}
         valueFormatter={(number: number) => `${number.toFixed(1)}`}
         onValueChange={(v) => console.log(v)}
       />
