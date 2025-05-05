@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import ModeToggle from "@/components/ui/themebutton";
 import { GraphProvider } from "@/contexts/GraphContext";
+import { HoverCard1 } from "@/components/ui/hover-card-1";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <GraphProvider>
+            <HoverCard1 />
             <div className="inline-flex justify-end items-center p-4 min-w-full">
               <ModeToggle />
             </div>

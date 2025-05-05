@@ -51,7 +51,6 @@ export default function Graph2() {
       <CardHeader>
         <CardTitle>UV Index</CardTitle>
       </CardHeader>
-      <ChartColumnBig />
       <AreaChart
         className="h-60"
         data={chartData}
