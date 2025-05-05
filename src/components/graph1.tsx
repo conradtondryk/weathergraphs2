@@ -3,7 +3,7 @@
 import useSWR from "swr";
 import { AreaChart } from "@/tremorcomponents/areagraph";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card } from "./ui/card";
+import { Card, CardHeader, CardTitle } from "./ui/card";
 
 interface WeatherData {
   date: string;
@@ -46,6 +46,9 @@ export default function Graph1() {
 
   return (
     <Card className="p-4">
+      <CardHeader>
+        <CardTitle>Temperature</CardTitle>
+      </CardHeader>
       <AreaChart
         className="h-60"
         data={chartData}
