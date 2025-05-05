@@ -3,22 +3,13 @@
 import { ChartColumnBig } from "lucide-react";
 import { ChartLine } from "lucide-react";
 import * as React from "react";
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { useGraphType } from "@/contexts/GraphContext";
 
-export default function GraphType() {
-  const { graphType, setGraphType } = setGraphType();
-  const [mounted, setMounted] = useState(false);
+export default function GraphButton() {
+  const { graphType, setGraphType } = useGraphType();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
-  if (graphType === "column") {
+  if (graphType === "bar") {
     return (
       <Button
         variant="outline"
@@ -30,15 +21,9 @@ export default function GraphType() {
     );
   }
 
-  if (graphType === "line") {
-    return (
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={() => setGraphType("column")}
-      >
-        <ChartLine className="h-[1.2rem] w-[1.2rem] transition-all hover:cursor-pointer" />
-      </Button>
-    );
-  }
+  return (
+    <Button variant="outline" size="icon" onClick={() => setGraphType("bar")}>
+      <ChartLine className="h-[1.2rem] w-[1.2rem] transition-all hover:cursor-pointer" />
+    </Button>
+  );
 }
