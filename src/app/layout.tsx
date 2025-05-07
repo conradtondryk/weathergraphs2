@@ -39,10 +39,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <GraphProvider>
-            <div className="pt-2">
+            <div className="flex justify-between items-center p-4 min-w-full">
               <HoverCard1 />
-            </div>
-            <div className="inline-flex justify-end items-center p-4 min-w-full">
               <ModeToggle />
             </div>
             {children}
