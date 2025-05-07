@@ -5,16 +5,7 @@ import { AreaChart } from "@/tremorcomponents/area-graph";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartColumnBig } from "lucide-react";
-
-interface WeatherData {
-  date: string;
-  temperature_c: number;
-  humidity_percent: number;
-  uv_index: number;
-  precipitation_mm: number;
-  wind_speed_kmh: number;
-  id: string;
-}
+import { WeatherData } from "@/lib/weather-data";
 
 // Fetcher function for SWR
 const fetcher = async (url: string) => {

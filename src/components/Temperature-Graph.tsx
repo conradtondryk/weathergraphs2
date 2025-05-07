@@ -5,18 +5,9 @@ import { BarChart } from "@/tremorcomponents/Bar-Graph";
 import { AreaChart } from "@/tremorcomponents/area-graph";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { useGraphType } from "@/contexts/Graph-Context";
+import { useGraphType } from "@/contexts/graph-context";
 import GraphButton from "@/components/ui/graphtype";
-
-interface WeatherData {
-  date: string;
-  temperature_c: number;
-  humidity_percent: number;
-  uv_index: number;
-  precipitation_mm: number;
-  wind_speed_kmh: number;
-  id: string;
-}
+import { WeatherData } from "@/lib/weather-data";
 
 const fetcher = async (url: string) => {
   const response = await fetch(url);
