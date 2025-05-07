@@ -5,6 +5,7 @@ import { Moon, Sun, Monitor } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ModeToggle() {
   const { theme, setTheme } = useTheme();
@@ -15,7 +16,7 @@ export default function ModeToggle() {
   }, []);
 
   if (!mounted) {
-    return null;
+    return <Skeleton className="size-9" />;
   }
 
   if (theme === "system") {

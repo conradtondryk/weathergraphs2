@@ -6,6 +6,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const portfolioLink = (
   <Link href="https://portfolio.ctondryk.dev" className="text-blue-500">
@@ -15,11 +16,17 @@ const portfolioLink = (
   </Link>
 );
 
-export function HoverCard1() {
+interface HoverCardProps {
+  className?: string;
+}
+
+export function HoverCard1({ className }: HoverCardProps) {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Button variant="link">@ctondryk.dev</Button>
+        <Button variant="link" className={className}>
+          @ctondryk.dev
+        </Button>
       </HoverCardTrigger>
       <HoverCardContent className="w-80">
         <div className="flex justify-between space-x-4">
