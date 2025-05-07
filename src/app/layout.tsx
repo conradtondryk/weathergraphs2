@@ -3,8 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import ModeToggle from "@/components/ui/theme-button";
-import { GraphProvider } from "@/contexts/Graph-Context";
-import { HoverCard1 } from "@/components/ui/hover-card-1";
+import { GraphProvider } from "@/contexts/graph-context";
+import { HoverCard1 } from "@/components/hover-card-1";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
