@@ -1,7 +1,7 @@
 "use client";
 
 import useSWR from "swr";
-import { BarChart } from "@/tremorcomponents/BarGraph";
+import { BarChart } from "@/tremorcomponents/Bar-Graph";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 

@@ -4,7 +4,7 @@ import { ChartColumnBig } from "lucide-react";
 import { ChartLine } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
-import { useGraphType } from "@/contexts/GraphContext";
+import { useGraphType } from "@/contexts/Graph-Context";
 
 export default function GraphButton() {
   const { graphType, setGraphType } = useGraphType();

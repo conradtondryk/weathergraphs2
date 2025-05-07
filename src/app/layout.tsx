@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import ModeToggle from "@/components/ui/themebutton";
-import { GraphProvider } from "@/contexts/GraphContext";
+import ModeToggle from "@/components/ui/theme-button";
+import { GraphProvider } from "@/contexts/Graph-Context";
 import { HoverCard1 } from "@/components/ui/hover-card-1";
 
 const geistSans = Geist({

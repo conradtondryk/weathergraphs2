@@ -1,10 +1,9 @@
 "use client";
 
 import useSWR from "swr";
-import { AreaChart } from "@/tremorcomponents/areagraph";
+import { AreaChart } from "@/tremorcomponents/area-graph";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartColumnBig } from "lucide-react";
+import { Card, CardHeader, CardTitle } from "./ui/card";
 
 interface WeatherData {
   date: string;
@@ -25,7 +24,7 @@ const fetcher = async (url: string) => {
   return response.json();
 };
 
-export default function Graph2() {
+export default function Graph1() {
   const {
     data: weatherData,
     error,
@@ -39,7 +38,6 @@ export default function Graph2() {
         month: "short",
         day: "numeric",
       }),
-      "UV Index": item.uv_index,
       Temperature: item.temperature_c,
     })) || [];
 
@@ -49,15 +47,14 @@ export default function Graph2() {
   return (
     <Card className="p-4">
       <CardHeader>
-        <CardTitle>UV Index</CardTitle>
+        <CardTitle>Temperature</CardTitle>
       </CardHeader>
       <AreaChart
         className="h-60"
         data={chartData}
         index="date"
-        categories={["UV Index", "Temperature"]}
-        colors={["amber", "emerald"]}
-        valueFormatter={(number: number) => `${number.toFixed(1)}`}
+        categories={["Temperature"]}
+        valueFormatter={(number: number) => `${number.toFixed(1)}°C`}
         onValueChange={(v) => console.log(v)}
       />
     </Card>
