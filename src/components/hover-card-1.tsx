@@ -1,5 +1,3 @@
-"use client";
-
 import {
   HoverCard,
   HoverCardContent,
@@ -9,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 
 const portfolioLink = (
   <Link href="https://portfolio.ctondryk.dev" className="text-blue-500">
@@ -24,16 +21,10 @@ interface HoverCardProps {
 }
 
 export function HoverCard1({ className }: HoverCardProps) {
-  const [open, setOpen] = useState(false);
-
   return (
-    <HoverCard open={open} onOpenChange={setOpen}>
+    <HoverCard>
       <HoverCardTrigger asChild>
-        <Button
-          variant="link"
-          className={className}
-          onClick={() => setOpen(true)}
-        >
+        <Button variant="link" className={className}>
           @ctondryk.dev
         </Button>
       </HoverCardTrigger>
