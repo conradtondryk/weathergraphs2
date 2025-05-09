@@ -3,7 +3,7 @@
 import useSWR from "swr";
 import { AreaChart } from "@/tremorcomponents/area-graph";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardHeader, CardTitle } from "../ui/card";
 import { WeatherData } from "@/lib/weather-data";
 
 // Fetcher function for SWR
