@@ -1,30 +1,20 @@
 "use client";
 
-import useSWR from "swr";
 import { BarChart } from "@/tremorcomponents/Bar-Graph";
 import { AreaChart } from "@/tremorcomponents/area-graph";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useGraphType } from "@/contexts/graph-context";
 import GraphButton from "@/components/ui/graphtype";
 import { WeatherData } from "@/lib/weather-data";
 
-const fetcher = async (url: string) => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch: ${response.status}`);
-  }
-  return response.json();
-};
+interface TemperatureGraphProps {
+  weatherData: WeatherData[];
+}
 
-export default function TemperatureGraph() {
+export default function TemperatureGraph({
+  weatherData,
+}: TemperatureGraphProps) {
   const { graphType } = useGraphType();
-
-  const {
-    data: weatherData,
-    error,
-    isLoading,
-  } = useSWR<WeatherData[]>("https://fake-api.lynas.dev/weather", fetcher);
 
   // Format data for the chart
   const chartData =
@@ -35,9 +25,6 @@ export default function TemperatureGraph() {
       }),
       Temperature: item.temperature_c,
     })) || [];
-
-  if (isLoading) return <Skeleton className="h-68" />;
-  if (error) return <div>Error loading data: {error.message}</div>;
 
   return (
     <Card className="p-4">

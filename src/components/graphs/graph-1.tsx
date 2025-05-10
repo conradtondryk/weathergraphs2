@@ -32,9 +32,6 @@ export default function Graph1() {
       Temperature: item.temperature_c,
     })) || [];
 
-  if (isLoading) return <Skeleton className="h-68" />;
-  if (error) return <div>Error loading data: {error.message}</div>;
-
   return (
     <Card className="p-4">
       <CardHeader>
