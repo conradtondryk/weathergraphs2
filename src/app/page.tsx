@@ -1,5 +1,5 @@
-import Graph2 from "@/components/graph-2";
-import TemperatureGraph from "@/components/temperature-graph1";
+import Graph2 from "@/components/graphs/graph-2";
+import TemperatureGraph from "@/components/graphs/temperature-graph1";
 import { SparkAreaChart } from "@/tremorcomponents/spark-chart";
 import { WeatherData } from "@/lib/weather-data";
 import { CarouselDemo } from "@/components/carousel-demo";
