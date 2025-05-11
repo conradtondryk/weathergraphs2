@@ -1,5 +1,4 @@
 import { WeatherData } from "@/lib/weather-data";
-import { DataContext } from "@/contexts/data";
 import { useContext } from "react";
 import { SparkAreaChart } from "@/tremorcomponents/spark-chart";
 
