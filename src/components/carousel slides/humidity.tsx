@@ -17,7 +17,7 @@ export default function HumiditySlide({ weatherData }: HumiditySlideProps) {
     })) || [];
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-full w-full select-none">
       <div className="flex-1 flex items-center justify-center">
         <h2 className="text-2xl font-semibold">Humidity</h2>
       </div>

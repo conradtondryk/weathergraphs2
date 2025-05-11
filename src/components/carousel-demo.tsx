@@ -36,7 +36,7 @@ export function CarouselDemo() {
 
   return (
     <Carousel
-      className="w-full max-w-md mx-auto"
+      className="w-full max-w-md mx-auto select-none"
       opts={{
         loop: true,
         align: "center",
