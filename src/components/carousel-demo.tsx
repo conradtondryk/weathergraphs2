@@ -9,16 +9,31 @@ import PrecipitationSlide from "./carousel slides/precipitation";
 import TemperatureSlide from "./carousel slides/temperature";
 import UvSlide from "./carousel slides/uv";
 import WindSlide from "./carousel slides/wind";
+import useSWR from "swr";
+import { WeatherData } from "@/lib/weather-data";
 
-const slides = [
-  <HumiditySlide />,
-  <PrecipitationSlide />,
-  <TemperatureSlide />,
-  <UvSlide />,
-  <WindSlide />,
-];
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch: ${response.status}`);
+  }
+  return response.json();
+};
 
 export function CarouselDemo() {
+  const { data: weatherData = [] } = useSWR<WeatherData[]>(
+    "https://fake-api.lynas.dev/weather",
+    fetcher
+  );
+
+  const slides = [
+    <HumiditySlide weatherData={weatherData} />,
+    <PrecipitationSlide weatherData={weatherData} />,
+    <TemperatureSlide weatherData={weatherData} />,
+    <UvSlide weatherData={weatherData} />,
+    <WindSlide weatherData={weatherData} />,
+  ];
+
   return (
     <Carousel
       className="w-full max-w-md mx-auto"

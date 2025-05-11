@@ -18,15 +18,20 @@ export default function HumiditySlide({ weatherData }: HumiditySlideProps) {
     })) || [];
 
   return (
-    <>
-      <SparkAreaChart
-        data={chartData}
-        index="date"
-        categories={["humidity"]}
-        colors={["blue"]}
-        className="h-24 w-full"
-        connectNulls={true}
-      />
-    </>
+    <div className="flex flex-col h-full w-full">
+      <div className="flex-1 flex items-center justify-center">
+        <h2 className="text-2xl font-semibold">Humidity</h2>
+      </div>
+      <div className="w-full">
+        <SparkAreaChart
+          data={chartData}
+          index="date"
+          categories={["humidity"]}
+          colors={["blue"]}
+          className="h-24 w-full"
+          connectNulls={true}
+        />
+      </div>
+    </div>
   );
 }
