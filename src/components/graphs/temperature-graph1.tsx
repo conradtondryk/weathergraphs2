@@ -3,7 +3,7 @@
 import { BarChart } from "@/tremorcomponents/Bar-Graph";
 import { AreaChart } from "@/tremorcomponents/area-graph";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { useGraphType } from "@/contexts/graph-context";
+import { useGraphType } from "@/contexts/graph-context1";
 import GraphButton from "@/components/ui/graphtype";
 import { WeatherData } from "@/lib/weather-data";
 
