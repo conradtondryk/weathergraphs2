@@ -1,3 +1,12 @@
+export interface WeatherData {
+  date: string;
+  uv_index: number;
+  temperature_max: number;
+  temperature_min: number;
+  precipitation: number;
+  wind: number;
+}
+
 interface RawData {
   time: string[];
   uv_index_max: number[];
@@ -7,18 +16,9 @@ interface RawData {
   wind_speed_10m_max: number[];
 }
 
-interface WeatherData {
-  time: string;
-  uv_index: number;
-  temperature_max: number;
-  temperature_min: number;
-  precipitation: number;
-  wind: number;
-} 
-
-function transformWeatherData(data: RawData): WeatherData[] {
+export function transformWeatherData(data: RawData): WeatherData[] {
   return data.time.map((time, index) => ({
-    time: time,
+    date: time,
     uv_index: data.uv_index_max[index],
     temperature_max: data.temperature_2m_max[index],
     temperature_min: data.temperature_2m_min[index],
