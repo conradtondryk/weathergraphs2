@@ -15,16 +15,11 @@ const fetcher = async (url: string) => {
 };
 
 export default function Home() {
-  const { data: weatherData = [] } = useSWR<WeatherData[]>(
-    "https://fake-api.lynas.dev/weather",
-    fetcher
-  );
-
   return (
     <main className="flex flex-col gap-8 max-w-4xl mx-auto p-4 pb-16">
-      <TemperatureGraph weatherData={weatherData} />
+      <TemperatureGraph />
       <CarouselDemo />
-      <Graph2 weatherData={weatherData} />
+      <Graph2 />
     </main>
   );
 }

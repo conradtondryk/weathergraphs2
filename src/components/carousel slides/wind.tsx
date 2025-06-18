@@ -11,7 +11,7 @@ export default function WindSlide({ weatherData }: WindSlideProps) {
         month: "short",
         day: "numeric",
       }),
-      wind: item.wind_speed_kmh,
+      wind: item.wind,
     })) || [];
 
   return (

@@ -4,14 +4,14 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import HumiditySlide from "./carousel slides/humidity";
 import PrecipitationSlide from "./carousel slides/precipitation";
-import TemperatureSlide from "./carousel slides/temperature";
 import UvSlide from "./carousel slides/uv";
 import WindSlide from "./carousel slides/wind";
 import useSWR from "swr";
 import { WeatherData } from "@/lib/weather-data";
-
+import TemperatureMinSlide from "./carousel slides/temperaturemin";
+import { RawData } from "@/lib/weather-data";
+import { transformWeatherData } from "@/lib/weather-data";
 const fetcher = async (url: string) => {
   const response = await fetch(url);
   if (!response.ok) {
@@ -21,17 +21,18 @@ const fetcher = async (url: string) => {
 };
 
 export function CarouselDemo() {
-  const { data: weatherData = [] } = useSWR<WeatherData[]>(
-    "https://fake-api.lynas.dev/weather",
+  const { data: apiResponse } = useSWR(
+    "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=uv_index_max,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&past_days=31&forecast_days=1",
     fetcher
   );
-
+  const weatherData = apiResponse?.daily
+    ? transformWeatherData(apiResponse.daily)
+    : [];
   const slides = [
-    <HumiditySlide weatherData={weatherData} />,
     <PrecipitationSlide weatherData={weatherData} />,
-    <TemperatureSlide weatherData={weatherData} />,
     <UvSlide weatherData={weatherData} />,
     <WindSlide weatherData={weatherData} />,
+    <TemperatureMinSlide weatherData={weatherData} />,
   ];
 
   return (

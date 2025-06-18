@@ -1,15 +1,28 @@
 "use client";
 
+import useSWR from "swr";
 import { AreaChart } from "@/tremorcomponents/area-graph";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { WeatherData } from "@/lib/weather-data";
+import { WeatherData, transformWeatherData } from "@/lib/weather-data";
 
-interface Graph2Props {
-  weatherData: WeatherData[];
-}
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch: ${response.status}`);
+  }
+  return response.json();
+};
 
-export default function Graph2({ weatherData }: Graph2Props) {
-  // Format data for the chart
+export default function Graph2() {
+  const { data: apiResponse } = useSWR(
+    "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=uv_index_max,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&past_days=31&forecast_days=1",
+    fetcher
+  );
+
+  const weatherData = apiResponse?.daily
+    ? transformWeatherData(apiResponse.daily)
+    : [];
+
   const chartData =
     weatherData?.map((item) => ({
       date: new Date(item.date).toLocaleDateString("en-US", {
@@ -17,7 +30,7 @@ export default function Graph2({ weatherData }: Graph2Props) {
         day: "numeric",
       }),
       "UV Index": item.uv_index,
-      Temperature: item.temperature_c,
+      Temperature: item.temperature_max,
     })) || [];
 
   return (

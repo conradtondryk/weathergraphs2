@@ -7,7 +7,7 @@ export interface WeatherData {
   wind: number;
 }
 
-interface RawData {
+export interface RawData {
   time: string[];
   uv_index_max: number[];
   temperature_2m_max: number[];

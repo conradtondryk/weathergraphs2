@@ -14,7 +14,7 @@ export default function PrecipitationSlide({
         month: "short",
         day: "numeric",
       }),
-      precipitation: item.precipitation_mm,
+      precipitation: item.precipitation,
     })) || [];
 
   return (

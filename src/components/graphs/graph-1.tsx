@@ -29,7 +29,7 @@ export default function Graph1() {
         month: "short",
         day: "numeric",
       }),
-      Temperature: item.temperature_c,
+      Temperature: item.temperature_max,
     })) || [];
 
   return (
