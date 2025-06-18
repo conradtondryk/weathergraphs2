@@ -12,6 +12,8 @@ import { WeatherData } from "@/lib/weather-data";
 import TemperatureMinSlide from "./carousel slides/temperaturemin";
 import { RawData } from "@/lib/weather-data";
 import { transformWeatherData } from "@/lib/weather-data";
+import TemperatureMaxSlide from "./carousel slides/termperaturemax";
+
 const fetcher = async (url: string) => {
   const response = await fetch(url);
   if (!response.ok) {
@@ -33,6 +35,7 @@ export function CarouselDemo() {
     <UvSlide weatherData={weatherData} />,
     <WindSlide weatherData={weatherData} />,
     <TemperatureMinSlide weatherData={weatherData} />,
+    <TemperatureMaxSlide weatherData={weatherData} />,
   ];
 
   return (
